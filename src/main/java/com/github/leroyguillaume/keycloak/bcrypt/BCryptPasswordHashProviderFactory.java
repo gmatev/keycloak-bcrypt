@@ -29,7 +29,9 @@ import org.keycloak.provider.ProviderFactory;
  */
 public class BCryptPasswordHashProviderFactory implements PasswordHashProviderFactory {
     public static final String ID = "bcrypt";
-    public static final int DEFAULT_ITERATIONS = 10;
+
+    // BCrypt iterations are typically expressed as 2**log_rounds of the actual iterations
+    public static final int DEFAULT_ITERATIONS = 4096;    //12 log_rounds
 
     @Override
     public PasswordHashProvider create(KeycloakSession session) {
